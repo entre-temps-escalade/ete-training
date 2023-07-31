@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.divider {
+  margin: 10px;
+  border-top: 1px dashed #fff;
+  flex-grow: 1;
+}
+
+.grid-cols-card {
+  grid-template-columns: max-content 1fr max-content;
+}
+
+.slide-animation {
+  transition: transform .3s ease;
+}
