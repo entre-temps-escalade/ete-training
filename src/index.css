@@ -13,5 +13,5 @@
 }
 
 .slide-animation {
-  transition: transform .3s ease;
+  transition: transform 3s ease;
 }

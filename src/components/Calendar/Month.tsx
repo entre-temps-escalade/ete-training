@@ -10,7 +10,10 @@ interface Props extends React.ComponentProps<"div"> {
 const Month = ({ month, className, ...props }: Props) => {
   return (
     <div
-      className={clsx("flex-1 grid grid-cols-7 grid-rows-6", className)}
+      className={clsx(
+        "shrink-0 w-full grid grid-cols-7 grid-rows-6",
+        className
+      )}
       {...props}
     >
       {month.map((row, i) => (
