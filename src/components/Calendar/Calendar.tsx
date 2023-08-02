@@ -29,9 +29,13 @@ const Calendar = () => {
       containerRef.current.addEventListener(
         "transitionend",
         () => {
-          containerRef.current!.style.transition = "none";
-          containerRef.current!.style.transform = "none";
-          setMonthIndex(monthIndex - 1);
+          requestAnimationFrame(() => {
+            setTimeout(() => {
+              containerRef.current!.style.transition = "none";
+              containerRef.current!.style.transform = "none";
+              setMonthIndex(monthIndex - 1);
+            }, 0);
+          });
         },
         { once: true }
       );
@@ -46,9 +50,13 @@ const Calendar = () => {
       containerRef.current.addEventListener(
         "transitionend",
         () => {
-          containerRef.current!.style.transition = "none";
-          containerRef.current!.style.transform = "none";
-          setMonthIndex(monthIndex + 1);
+          requestAnimationFrame(() => {
+            setTimeout(() => {
+              containerRef.current!.style.transition = "none";
+              containerRef.current!.style.transform = "none";
+              setMonthIndex(monthIndex + 1);
+            }, 0);
+          });
         },
         { once: true }
       );
@@ -93,7 +101,6 @@ const Calendar = () => {
 };
 
 // TODO: Add <MenuIcon /> to convert to list
-// TODO: Add transitions
 // TODO: Add year if previous or next reached
 
 export default Calendar;
