@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getMonth } from "../../utils/date";
 import dayjs from "dayjs";
 import Month from "./Month";
@@ -13,6 +13,8 @@ const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
   const [nextMonth, setNextMonth] = useState(getMonth(monthIndex + 1));
 
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     setPreviousMonth(getMonth(monthIndex - 1));
     setCurrentMonth(getMonth(monthIndex));
@@ -20,11 +22,37 @@ const Calendar = () => {
   }, [monthIndex]);
 
   const handlePreviousMonth = () => {
-    setMonthIndex(monthIndex - 1);
+    if (containerRef.current) {
+      containerRef.current.style.transition = "transform .3s ease";
+      containerRef.current.style.transform = "translateX(100%)";
+
+      containerRef.current.addEventListener(
+        "transitionend",
+        () => {
+          containerRef.current!.style.transition = "none";
+          containerRef.current!.style.transform = "none";
+          setMonthIndex(monthIndex - 1);
+        },
+        { once: true }
+      );
+    }
   };
 
   const handleNextMonth = () => {
-    setMonthIndex(monthIndex + 1);
+    if (containerRef.current) {
+      containerRef.current.style.transition = "transform .3s ease";
+      containerRef.current.style.transform = "translateX(-100%)";
+
+      containerRef.current.addEventListener(
+        "transitionend",
+        () => {
+          containerRef.current!.style.transition = "none";
+          containerRef.current!.style.transform = "none";
+          setMonthIndex(monthIndex + 1);
+        },
+        { once: true }
+      );
+    }
   };
 
   const swipeHandlers = useSwipe({
@@ -49,11 +77,12 @@ const Calendar = () => {
           <ArrowIcon className="rotate-180 h-3" onClick={handleNextMonth} />
         </div>
       </div>
-      <div
-        className="w-full max-w-full touch-pan-y -translate-x-full"
-        {...swipeHandlers}
-      >
-        <div className="min-w-full flex flex-row">
+      <div className="w-full max-w-full touch-pan-y -translate-x-full">
+        <div
+          className="min-w-full flex flex-row"
+          ref={containerRef}
+          {...swipeHandlers}
+        >
           <Month month={previousMonth} />
           <Month month={currentMonth} />
           <Month month={nextMonth} />

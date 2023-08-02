@@ -11,7 +11,3 @@
 .grid-cols-card {
   grid-template-columns: max-content 1fr max-content;
 }
-
-.slide-animation {
-  transition: transform 3s ease;
-}
