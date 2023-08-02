@@ -23,7 +23,7 @@ const Calendar = () => {
 
   const handlePreviousMonth = () => {
     if (containerRef.current) {
-      containerRef.current.style.transition = "transform .3s ease";
+      containerRef.current.style.transition = "transform 250ms ease";
       containerRef.current.style.transform = "translateX(100%)";
 
       containerRef.current.addEventListener(
@@ -43,7 +43,7 @@ const Calendar = () => {
 
   const handleNextMonth = () => {
     if (containerRef.current) {
-      containerRef.current.style.transition = "transform .3s ease";
+      containerRef.current.style.transition = "transform 250ms ease";
       containerRef.current.style.transform = "translateX(-100%)";
 
       containerRef.current.addEventListener(
@@ -78,7 +78,10 @@ const Calendar = () => {
               .toUpperCase() +
               dayjs(new Date(dayjs().year(), monthIndex))
                 .format("MMMM")
-                .slice(1)}
+                .slice(1)}{" "}
+            {dayjs(new Date(dayjs().year(), monthIndex)).year() !==
+              dayjs().year() &&
+              dayjs(new Date(dayjs().year(), monthIndex)).year()}
           </span>
           <ArrowIcon className="rotate-180 h-3" onClick={handleNextMonth} />
         </div>
@@ -99,6 +102,7 @@ const Calendar = () => {
 };
 
 // TODO: Add <MenuIcon /> to convert to list
+// TODO: Add Month list when clicking on the month to select quicker
 // TODO: Add year if previous or next reached
 
 export default Calendar;
