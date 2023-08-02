@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { getMonth } from "../../utils/date";
 import dayjs from "dayjs";
-import Month from "./Month";
 import ArrowIcon from "../../icons/ArrowIcon";
 import { useAppContext } from "../../context/AppContext";
+import { getMonth } from "../../utils/date";
+import Month from "./Month";
 import useSwipe from "../../hooks/useSwipe";
 
 const Calendar = () => {
@@ -29,13 +29,12 @@ const Calendar = () => {
       containerRef.current.addEventListener(
         "transitionend",
         () => {
-          requestAnimationFrame(() => {
-            setTimeout(() => {
-              containerRef.current!.style.transition = "none";
-              containerRef.current!.style.transform = "none";
-              setMonthIndex(monthIndex - 1);
-            }, 0);
-          });
+          setMonthIndex(monthIndex - 1);
+
+          setTimeout(() => {
+            containerRef.current!.style.transition = "none";
+            containerRef.current!.style.transform = "none";
+          }, 10);
         },
         { once: true }
       );
@@ -50,13 +49,12 @@ const Calendar = () => {
       containerRef.current.addEventListener(
         "transitionend",
         () => {
-          requestAnimationFrame(() => {
-            setTimeout(() => {
-              containerRef.current!.style.transition = "none";
-              containerRef.current!.style.transform = "none";
-              setMonthIndex(monthIndex + 1);
-            }, 0);
-          });
+          setMonthIndex(monthIndex + 1);
+
+          setTimeout(() => {
+            containerRef.current!.style.transition = "none";
+            containerRef.current!.style.transform = "none";
+          }, 10);
         },
         { once: true }
       );
