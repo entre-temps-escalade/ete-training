@@ -1,0 +1,13 @@
+{
+    "account": {
+        "sign_in_to_your_account": "connexion à ton compte",
+        "enter_your_email": "entrez votre email",
+        "enter_your_password": "entrez votre mot de passe",
+        "forgot_password": "mot de passe oublié",
+        "sign_in": "connexion",
+        "email": "email",
+        "password": "mot de passe",
+        "no_account_yet": "pas encore de compte",
+        "sign_up": "inscription"
+    }
+}

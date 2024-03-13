@@ -1,0 +1,40 @@
+import clsx from 'clsx'
+import { forwardRef } from 'react'
+import { twMerge } from 'tailwind-merge'
+
+interface Props extends React.ComponentProps<'input'> {
+    className?: string
+    label?: string
+}
+
+const Input = forwardRef<HTMLInputElement, Props>(function Input(
+    { className, label, readOnly, ...props },
+    ref,
+) {
+    return (
+        <>
+            {label && (
+                <label
+                    htmlFor={props.id}
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                    {label}
+                </label>
+            )}
+
+            <input
+                ref={ref}
+                className={twMerge(
+                    clsx(
+                        'bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500',
+                        className,
+                    ),
+                )}
+                readOnly={readOnly}
+                {...props}
+            />
+        </>
+    )
+})
+
+export default Input

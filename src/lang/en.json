@@ -1,0 +1,13 @@
+{
+    "account": {
+        "sign_in_to_your_account": "sign in to your account",
+        "enter_your_email": "enter your email",
+        "enter_your_password": "enter your password",
+        "forgot_password": "forgot password",
+        "sign_in": "sign in",
+        "email": "email",
+        "password": "password",
+        "no_account_yet": "don't have an account yet",
+        "sign_up": "sign up"
+    }
+}
