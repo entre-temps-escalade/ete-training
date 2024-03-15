@@ -35,18 +35,17 @@ export default function SegmentedControl({
     function handleClick(value: string) {
         onChange(value)
     }
-
     return (
         <div
             className={twMerge(
                 clsx(
-                    'bg-white dark:bg-gray-800 rounded-lg dark:border dark:border-gray-700 relative',
+                    'bg-white rounded-lg border border-gray-300 relative dark:bg-gray-700 dark:border-gray-600',
                     className,
                 ),
             )}
         >
             <div
-                className="bg-white dark:bg-primary-600 h-full rounded-md absolute transition"
+                className="bg-primary-600 h-full rounded-md absolute transition"
                 style={{
                     width: activePosition.width,
                     transform: `translateX(${activePosition.translate}px)`,

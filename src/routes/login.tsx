@@ -1,6 +1,7 @@
 import Button from '@/components/Button'
 import Input from '@/components/Input'
 import SegmentedControl from '@/components/SegmentedControl'
+import ThemeIcon from '@/components/ThemeIcon'
 import { useAppContext } from '@/context/AppContext'
 import emojis from '@/utils/emojis'
 import { t } from '@/utils/translate'
@@ -11,17 +12,19 @@ export default function Login() {
     return (
         <section className="bg-gray-50 dark:bg-gray-900">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
-                <SegmentedControl
-                    className="absolute top-3 right-3"
-                    value={language}
-                    onChange={(value: string) =>
-                        changeLanguage(value as 'fr' | 'en')
-                    }
-                    data={[
-                        { label: emojis.flag_fr, value: 'fr' },
-                        { label: emojis.flag_en, value: 'en' },
-                    ]}
-                />
+                <div className="absolute top-3 right-3 flex items-center space-x-4">
+                    <ThemeIcon />
+                    <SegmentedControl
+                        value={language}
+                        onChange={(value: string) =>
+                            changeLanguage(value as 'fr' | 'en')
+                        }
+                        data={[
+                            { label: emojis.flag_fr, value: 'fr' },
+                            { label: emojis.flag_en, value: 'en' },
+                        ]}
+                    />
+                </div>
                 <div className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                     <img
                         className="w-8 h-8 mr-2"
