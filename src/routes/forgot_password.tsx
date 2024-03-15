@@ -5,7 +5,7 @@ import { useAppContext } from '@/context/AppContext'
 import emojis from '@/utils/emojis'
 import { t } from '@/utils/translate'
 
-export default function Login() {
+export default function ForgotPassword() {
     const { theme, language, changeLanguage } = useAppContext()
 
     return (
@@ -33,41 +33,35 @@ export default function Login() {
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                            {t('account.sign_in_to_your_account').capitalize()}
+                            {t('account.forgot_password').capitalize()}
                         </h1>
-                        <form className="space-y-4 md:space-y-6">
-                            <div>
-                                <Input
-                                    label={t('account.email').capitalize()}
-                                    name="email"
-                                    id="email"
-                                    placeholder={t(
-                                        'account.enter_your_email',
+                        <form>
+                            <div className="space-y-4 md:space-y-6">
+                                <div>
+                                    <Input
+                                        label={t('account.email').capitalize()}
+                                        name="email"
+                                        id="email"
+                                        placeholder={t(
+                                            'account.enter_your_email',
+                                        ).capitalize()}
+                                        required
+                                    />
+                                </div>
+                                <Button type="submit" className="w-full">
+                                    {t(
+                                        'account.send_recuperation_link',
                                     ).capitalize()}
-                                    required
-                                />
+                                </Button>
                             </div>
-                            <div>
-                                <Input
-                                    label={t('account.password').capitalize()}
-                                    name="password"
-                                    id="password"
-                                    placeholder={t(
-                                        'account.enter_your_password',
-                                    ).capitalize()}
-                                    required
-                                    type="password"
-                                />
+                            <div className="text-center mt-2">
                                 <a
-                                    href="/forgot-password"
+                                    href="/login"
                                     className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                                 >
-                                    {t('account.forgot_password').capitalize()}?
+                                    {t('account.login').capitalize()}
                                 </a>
                             </div>
-                            <Button type="submit" className="w-full">
-                                {t('account.sign_in').capitalize()}
-                            </Button>
                         </form>
                     </div>
                 </div>

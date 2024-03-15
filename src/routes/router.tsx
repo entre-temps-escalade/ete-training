@@ -2,10 +2,11 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { Suspense, lazy } from 'react'
 
 const Login = lazy(() => import('@/routes/login'))
+const ForgotPassword = lazy(() => import('@/routes/forgot_password'))
 const Dashboard = lazy(() => import('@/routes/dashboard'))
 
 export default function Router() {
-    const fallbackItem = <div>Chargement</div>
+    const fallbackItem = <div>Chargement</div> // TODO
 
     const router = createBrowserRouter([
         {
@@ -21,6 +22,14 @@ export default function Router() {
             element: (
                 <Suspense fallback={fallbackItem}>
                     <Login />
+                </Suspense>
+            ),
+        },
+        {
+            path: '/forgot-password',
+            element: (
+                <Suspense fallback={fallbackItem}>
+                    <ForgotPassword />
                 </Suspense>
             ),
         },

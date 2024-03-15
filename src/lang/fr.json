@@ -5,9 +5,9 @@
         "enter_your_password": "entrez votre mot de passe",
         "forgot_password": "mot de passe oublié",
         "sign_in": "connexion",
+        "login": "se connecter",
         "email": "email",
         "password": "mot de passe",
-        "no_account_yet": "pas encore de compte",
-        "sign_up": "inscription"
+        "send_recuperation_link": "envoyer un lien de récupération"
     }
 }
