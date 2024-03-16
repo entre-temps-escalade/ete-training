@@ -18,5 +18,9 @@ function selectNestedProperty(selector: string, obj: any) {
         return selectNestedProperty(rest, obj[selected])
     }
 
-    return obj[selected][rest]
+    if (rest != '') {
+        return obj[selected][rest]
+    }
+
+    return obj[selected]
 }

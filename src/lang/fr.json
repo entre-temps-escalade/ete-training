@@ -9,5 +9,6 @@
         "email": "email",
         "password": "mot de passe",
         "send_recuperation_link": "envoyer un lien de récupération"
-    }
+    },
+    "loading": "chargement en cours"
 }

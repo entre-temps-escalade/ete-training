@@ -9,5 +9,6 @@
         "email": "email",
         "password": "password",
         "send_recuperation_link": "send recuperation link"
-    }
+    },
+    "loading": "loading"
 }
