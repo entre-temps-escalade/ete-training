@@ -2,11 +2,11 @@ import Button from '@/components/Button'
 import Input from '@/components/Input'
 import SegmentedControl from '@/components/SegmentedControl'
 import ThemeIcon from '@/components/ThemeIcon'
-import { useAppContext } from '@/context/AppContext'
+import useAppContext from '@/hooks/useAppContext'
+import useTranslate from '@/hooks/useTranslate'
 import emojis from '@/utils/emojis'
-import { t } from '@/utils/translate'
 
-export default function Login() {
+function Login() {
     const { theme, language, changeLanguage } = useAppContext()
 
     return (
@@ -36,28 +36,28 @@ export default function Login() {
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                            {t('account.sign_in_to_your_account').capitalize()}
+                            {useTranslate('account.sign_in_to_your_account')}
                         </h1>
                         <form className="space-y-4 md:space-y-6">
                             <div>
                                 <Input
-                                    label={t('account.email').capitalize()}
+                                    label={useTranslate('account.email')}
                                     name="email"
                                     id="email"
-                                    placeholder={t(
+                                    placeholder={useTranslate(
                                         'account.enter_your_email',
-                                    ).capitalize()}
+                                    )}
                                     required
                                 />
                             </div>
                             <div>
                                 <Input
-                                    label={t('account.password').capitalize()}
+                                    label={useTranslate('account.password')}
                                     name="password"
                                     id="password"
-                                    placeholder={t(
+                                    placeholder={useTranslate(
                                         'account.enter_your_password',
-                                    ).capitalize()}
+                                    )}
                                     required
                                     type="password"
                                 />
@@ -65,11 +65,11 @@ export default function Login() {
                                     href="/forgot-password"
                                     className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                                 >
-                                    {t('account.forgot_password').capitalize()}?
+                                    {useTranslate('account.forgot_password')}?
                                 </a>
                             </div>
                             <Button type="submit" className="w-full">
-                                {t('account.sign_in').capitalize()}
+                                {useTranslate('account.sign_in')}
                             </Button>
                         </form>
                     </div>
@@ -78,3 +78,5 @@ export default function Login() {
         </section>
     )
 }
+
+export default Login

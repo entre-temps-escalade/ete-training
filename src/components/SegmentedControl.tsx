@@ -1,4 +1,3 @@
-import { clsx } from 'clsx'
 import { useEffect, useRef, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -9,12 +8,7 @@ type Props = {
     className?: string
 }
 
-export default function SegmentedControl({
-    value,
-    onChange,
-    data,
-    className,
-}: Props) {
+function SegmentedControl({ value, onChange, data, className }: Props) {
     const [activePosition, setActivePosition] = useState({
         width: 0,
         translate: 0,
@@ -38,10 +32,8 @@ export default function SegmentedControl({
     return (
         <div
             className={twMerge(
-                clsx(
-                    'bg-white rounded-lg border border-gray-300 relative dark:bg-gray-700 dark:border-gray-600',
-                    className,
-                ),
+                'bg-white rounded-lg border border-gray-300 relative dark:bg-gray-700 dark:border-gray-600',
+                className,
             )}
         >
             <div
@@ -57,9 +49,7 @@ export default function SegmentedControl({
                     key={d.value}
                     onClick={() => handleClick(d.value)}
                     ref={d.value === value ? selectedRef : null}
-                    className={clsx(
-                        'rounded-md py-2 focus:outline-none sm:px-3 px-2 z-10 relative',
-                    )}
+                    className="rounded-md py-2 focus:outline-none sm:px-3 px-2 z-10 relative"
                 >
                     {d.label}
                 </button>
@@ -67,3 +57,5 @@ export default function SegmentedControl({
         </div>
     )
 }
+
+export default SegmentedControl

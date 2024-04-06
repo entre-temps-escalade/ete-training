@@ -1,14 +1,15 @@
 {
     "account": {
-        "sign_in_to_your_account": "sign in to your account",
-        "enter_your_email": "enter your email",
-        "enter_your_password": "enter your password",
-        "forgot_password": "forgot password",
-        "sign_in": "sign in",
-        "login": "login",
-        "email": "email",
-        "password": "password",
-        "send_recuperation_link": "send recuperation link"
+        "sign_in_to_your_account": "Sign in to your account",
+        "enter_your_email": "Enter your email",
+        "enter_your_password": "Enter your password",
+        "forgot_password": "Forgot password",
+        "sign_in": "Sign in",
+        "login": "Login",
+        "email": "Email",
+        "password": "Password",
+        "send_recuperation_link": "Send recuperation link"
     },
-    "loading": "loading"
+    "loading": "Loading",
+    "choose_climber": "Choose a climber"
 }

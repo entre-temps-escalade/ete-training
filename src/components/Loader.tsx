@@ -1,5 +1,4 @@
-import { useAppContext } from '@/context/AppContext'
-import { clsx } from 'clsx'
+import useAppContext from '@/hooks/useAppContext'
 import { twMerge } from 'tailwind-merge'
 
 type Props = {
@@ -8,17 +7,15 @@ type Props = {
     children?: React.ReactNode
 }
 
-export default function Loader({ className, animate, children }: Props) {
+function Loader({ className, animate, children }: Props) {
     const { theme } = useAppContext()
 
     return (
         <div
             className={twMerge(
-                clsx(
-                    'flex flex-col justify-center items-center',
-                    animate && 'animate-pulse',
-                    className,
-                ),
+                'flex flex-col justify-center items-center',
+                animate && 'animate-pulse',
+                className,
             )}
         >
             <img
@@ -35,3 +32,5 @@ export default function Loader({ className, animate, children }: Props) {
         </div>
     )
 }
+
+export default Loader

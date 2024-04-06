@@ -2,11 +2,11 @@ import Button from '@/components/Button'
 import Input from '@/components/Input'
 import SegmentedControl from '@/components/SegmentedControl'
 import ThemeIcon from '@/components/ThemeIcon'
-import { useAppContext } from '@/context/AppContext'
+import useAppContext from '@/hooks/useAppContext'
+import useTranslate from '@/hooks/useTranslate'
 import emojis from '@/utils/emojis'
-import { t } from '@/utils/translate'
 
-export default function ForgotPassword() {
+function ForgotPassword() {
     const { theme, language, changeLanguage } = useAppContext()
 
     return (
@@ -36,25 +36,25 @@ export default function ForgotPassword() {
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                            {t('account.forgot_password').capitalize()}
+                            {useTranslate('account.forgot_password')}
                         </h1>
                         <form>
                             <div className="space-y-4 md:space-y-6">
                                 <div>
                                     <Input
-                                        label={t('account.email').capitalize()}
+                                        label={useTranslate('account.email')}
                                         name="email"
                                         id="email"
-                                        placeholder={t(
+                                        placeholder={useTranslate(
                                             'account.enter_your_email',
-                                        ).capitalize()}
+                                        )}
                                         required
                                     />
                                 </div>
                                 <Button type="submit" className="w-full">
-                                    {t(
+                                    {useTranslate(
                                         'account.send_recuperation_link',
-                                    ).capitalize()}
+                                    )}
                                 </Button>
                             </div>
                             <div className="text-center mt-2">
@@ -62,7 +62,7 @@ export default function ForgotPassword() {
                                     href="/login"
                                     className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                                 >
-                                    {t('account.login').capitalize()}
+                                    {useTranslate('account.login')}
                                 </a>
                             </div>
                         </form>
@@ -72,3 +72,5 @@ export default function ForgotPassword() {
         </section>
     )
 }
+
+export default ForgotPassword

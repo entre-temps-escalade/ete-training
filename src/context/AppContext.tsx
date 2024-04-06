@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 function getDefaultTheme() {
     if (
@@ -23,12 +23,15 @@ function getDefaultLanguage() {
     }
 }
 
-interface IAppContext {
-    theme: 'dark' | 'light'
-    language: 'fr' | 'en'
+export type Language = 'fr' | 'en'
+export type Theme = 'dark' | 'light'
 
-    changeTheme(theme: 'dark' | 'light' | 'system'): void
-    changeLanguage(language: 'fr' | 'en'): void
+interface IAppContext {
+    theme: Theme
+    language: Language
+
+    changeTheme(theme: Theme | 'system'): void
+    changeLanguage(language: Language): void
 }
 
 const defaultState: IAppContext = {
@@ -60,7 +63,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         document.documentElement.lang = language
     }, [language])
 
-    function changeTheme(theme: 'dark' | 'light' | 'system') {
+    function changeTheme(theme: Theme | 'system') {
         if (theme === 'dark') {
             localStorage.theme = 'dark'
             setTheme('dark')
@@ -82,7 +85,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         }
     }
 
-    function changeLanguage(language: 'fr' | 'en') {
+    function changeLanguage(language: Language) {
         setLanguage(language)
     }
 
@@ -93,8 +96,4 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
             {children}
         </AppContext.Provider>
     )
-}
-
-export const useAppContext = () => {
-    return useContext(AppContext)
 }

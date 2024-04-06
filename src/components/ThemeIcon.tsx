@@ -1,11 +1,11 @@
-import { useAppContext } from '@/context/AppContext'
-import clsx from 'clsx'
+import useAppContext from '@/hooks/useAppContext'
+import { twMerge } from 'tailwind-merge'
 
 type Props = {
     className?: string
 }
 
-export default function ThemeIcon({ className }: Props) {
+function ThemeIcon({ className }: Props) {
     const { theme, changeTheme } = useAppContext()
 
     function handleClick() {
@@ -19,7 +19,7 @@ export default function ThemeIcon({ className }: Props) {
     return (
         <button
             onClick={handleClick}
-            className={clsx(
+            className={twMerge(
                 'bg-white text-gray-800 border-gray-300 dark:text-gray-300 dark:bg-gray-700 dark:border-gray-600 border rounded-lg text-sm p-2',
                 className,
             )}
@@ -50,3 +50,5 @@ export default function ThemeIcon({ className }: Props) {
         </button>
     )
 }
+
+export default ThemeIcon
