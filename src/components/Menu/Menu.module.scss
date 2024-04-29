@@ -1,0 +1,11 @@
+.menu_dropdown {
+    transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.menu_dropdown__opened {
+    opacity: 1;
+    visibility: visible;
+}

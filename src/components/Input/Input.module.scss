@@ -1,0 +1,49 @@
+@import "@/styles/mixins";
+
+.label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    color: var(--gray-900);
+}
+
+:global(.dark) .label {
+    color: var(--gray-50);
+}
+
+.input {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-300);
+    color: var(--gray-900);
+    border-radius: 0.5rem;
+    display: block;
+    width: 100%;
+    padding: 0.625rem;
+
+    &:focus {
+        box-shadow: 0 0 0 3px var(--primary-600);
+        border-color: var(--primary-600);
+    }
+
+    @include sm() {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+    }
+
+    @include placeholder() {
+        color: var(--gray-400);
+    }
+}
+
+:global(.dark) .input {
+    background: var(--gray-700);
+    border-color: var(--gray-600);
+    color: var(--gray-50);
+
+    &:focus {
+        box-shadow: 0 0 0 3px var(--primary-500);
+        border-color: var(--primary-500);
+    }
+}

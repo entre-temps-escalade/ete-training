@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    height: 6rem;
+    background: var(--gray-100);
+    border-bottom: 1px solid var(--gray-200);
+}
+
+:global(.dark) .header {
+    background: var(--gray-800);
+    border-bottom: 1px solid var(--gray-700);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.page_icon {
+    margin-left: 0.75rem;
+}
