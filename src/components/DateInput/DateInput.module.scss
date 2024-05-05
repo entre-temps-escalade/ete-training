@@ -1,0 +1,86 @@
+.dateinput_modal {
+    transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    background: var(--gray-700);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--gray-600);
+    user-select: none;
+
+    & button {
+        background: transparent !important;
+        padding: 0.6rem !important;
+        margin: 0 !important;
+        transition: none !important;
+
+        &:hover {
+            background: var(--gray-600) !important;
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 0px !important;
+        }
+    }
+
+    .current_day {
+        background: var(--primary-600) !important;
+    }
+}
+
+.dateinput_calendar {
+    margin-top: 0.75rem;
+    justify-items: center;
+
+    & th {
+        color: var(--gray-400);
+        font-weight: 400;
+    }
+
+    & tbody {
+        & button {
+            width: 100%;
+        }
+    }
+}
+
+.dateinput_month {
+    margin-top: 0.75rem;
+    justify-items: center;
+
+    & button {
+        width: 5.7rem;
+    }
+}
+
+.dateinput_modal__opened {
+    opacity: 1;
+    visibility: visible;
+}
+
+.input {
+    width: auto;
+    cursor: pointer;
+    min-width: 20rem;
+    caret-color: transparent;
+}
+
+.calendar_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.other_month {
+    color: var(--gray-500) !important;
+}
+
+.weekend_day {
+    color: var(--red-600) !important;
+}
+
+
+.button_grow {
+    flex-grow: 1;
+}

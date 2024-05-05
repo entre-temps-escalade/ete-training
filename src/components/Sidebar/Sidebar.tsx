@@ -37,6 +37,8 @@ export default function Sidebar() {
     );
   }
 
+  // FIXME: move sidebar menu to it's own component because the
+  // mounted check renders a black zone before rendering the proper sidebar.
   return (
     <nav className={styles.sidebar}>
       <Link href="/" className={styles.header}>

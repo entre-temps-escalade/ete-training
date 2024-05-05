@@ -19,6 +19,9 @@
     --primary-700: #1d4ed8;
     --primary-800: #1e40af;
 
+    --red-600: #dc2626;
+    --red-700: #b91c1c;
+
     --bg: var(--gray-50);
 }
 
