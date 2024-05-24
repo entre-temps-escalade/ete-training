@@ -1,6 +1,9 @@
+"use client";
+
 import Sidebar from "@/components/Sidebar/Sidebar";
 import styles from "./Layout.module.scss";
 import Header from "@/components/Header/Header";
+import { SidebarProvider } from "@/components/Sidebar/SidebarContext";
 
 export default function DashboardLayout({
   children,
@@ -9,11 +12,13 @@ export default function DashboardLayout({
 }>) {
   return (
     <div className={styles.layout}>
-      <Sidebar />
-      <section>
-        <Header />
-        {children}
-      </section>
+      <SidebarProvider>
+        <Sidebar />
+        <section>
+          <Header />
+          {children}
+        </section>
+      </SidebarProvider>
     </div>
   );
 }

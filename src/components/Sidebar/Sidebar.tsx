@@ -5,21 +5,22 @@ import styles from "./Sidebar.module.scss";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Icon from "../Icon/Icon";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useContext, useLayoutEffect, useRef } from "react";
 import ProfileMenu from "./ProfileMenu";
 import Menu from "../Menu/Menu";
 import Button from "../Button/Button";
+import { SidebarContext } from "./SidebarContext";
 
 export default function Sidebar() {
-  const [expanded, setExpanded] = useState<boolean | undefined>(undefined);
+  const { expanded, expand, reduce } = useContext(SidebarContext)!;
   const pathname = usePathname();
   const sidebarRef = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
     if (window.innerWidth < 640) {
-      setExpanded(false);
+      reduce();
     } else {
-      setExpanded(true);
+      expand();
     }
   }, []);
 
@@ -28,7 +29,7 @@ export default function Sidebar() {
       if (!e.target || !sidebarRef.current || !expanded) return;
 
       if (!sidebarRef.current.contains(e.target as Node)) {
-        setExpanded(false);
+        reduce();
       }
     }
 
@@ -42,7 +43,7 @@ export default function Sidebar() {
   }, [sidebarRef.current, expanded]);
 
   function handleExpand() {
-    setExpanded((expanded) => !expanded);
+    expanded ? reduce() : expand();
   }
 
   function SidebarLink({
@@ -60,7 +61,6 @@ export default function Sidebar() {
     );
   }
 
-  // TODO: gesture on mobile
   // TODO: better animation
   return (
     <nav

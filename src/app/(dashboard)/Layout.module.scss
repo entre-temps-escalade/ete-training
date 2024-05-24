@@ -9,10 +9,6 @@
   &>section {
     width: 100%;
     overflow-x: hidden;
-
-    @include -sm() {
-      margin-left: 4rem;
-    }
   }
 }
 
