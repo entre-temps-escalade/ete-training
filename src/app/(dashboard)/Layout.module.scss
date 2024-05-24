@@ -1,10 +1,21 @@
+@import "@/styles/mixins";
+
 .layout {
-    margin-left: 16rem;
-    min-height: 100vh;
-    display: block;
-    background: var(--gray-50);
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--gray-50);
+
+  &>section {
+    width: 100%;
+    overflow-x: hidden;
+
+    @include -sm() {
+      margin-left: 4rem;
+    }
+  }
 }
 
 :global(.dark) .layout {
-    background: var(--gray-900);
+  background: var(--gray-900);
 }

@@ -4,6 +4,12 @@
     }
 }
 
+@mixin -sm() {
+    @media (max-width: 640px) {
+        @content;
+    }
+}
+
 @mixin md() {
     @media (min-width: 768px) {
         @content;

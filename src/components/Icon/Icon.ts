@@ -5,8 +5,10 @@ import Home from "./Home";
 import CalendarDays from "./CalendarDays";
 import AngleLeft from "./AngleLeft";
 import AngleRight from "./AngleRight";
+import Bars from "./Bars";
 
 const icons = {
+  Bars,
   Sun,
   Moon,
   User,

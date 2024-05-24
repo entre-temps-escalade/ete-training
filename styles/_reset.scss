@@ -5,6 +5,8 @@
     border-width: 0;
     border-style: solid;
     border-color: #e5e7eb;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {

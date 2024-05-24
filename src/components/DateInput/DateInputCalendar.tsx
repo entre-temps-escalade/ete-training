@@ -15,6 +15,7 @@ interface Props {
 
 interface Position {
   top: number;
+  left: number;
 }
 
 export default function DateInputCalendar({
@@ -23,35 +24,48 @@ export default function DateInputCalendar({
 }: Props) {
   const [calendarRef, setCalendarRef] = useState<HTMLDivElement | null>(null);
   const [_position, _setPosition] = useState<Position>();
-  const { height: windowHeight } = useWindowSize();
+  const { height: windowHeight, width: windowWidth } = useWindowSize();
   const ctx = useContext(DateInputContext)!;
   const [display, setDisplay] = useState<"day" | "month" | "year">("day");
 
   useLayoutEffect(() => {
-    if (!ctx.targetRef || !calendarRef || !windowHeight) return;
+    if (!ctx.targetRef || !calendarRef || !windowHeight || !windowWidth) return;
 
     const targetRect = ctx.targetRef.getBoundingClientRect();
     const dropdownHeight = calendarRef.getBoundingClientRect().height;
+    const dropdownWidth = calendarRef.getBoundingClientRect().width;
+
+    let top = 0;
+    let left = 0;
 
     if (position === "top") {
       if (
         targetRect.top > dropdownHeight + 10 ||
         windowHeight - targetRect.bottom < dropdownHeight + 10
       ) {
-        _setPosition({ top: targetRect.top - dropdownHeight - 10 });
+        top = targetRect.top - dropdownHeight - 10;
       } else {
-        _setPosition({ top: targetRect.bottom + 10 });
+        top = targetRect.bottom + 10;
       }
     } else {
       if (
         windowHeight - targetRect.bottom > dropdownHeight + 10 ||
         targetRect.top < dropdownHeight + 10
       ) {
-        _setPosition({ top: targetRect.bottom + 10 });
+        top = targetRect.bottom + 10;
       } else {
-        _setPosition({ top: targetRect.top - dropdownHeight - 10 });
+        top = targetRect.top - dropdownHeight - 10;
       }
     }
+
+    if (targetRect.left + dropdownWidth > windowWidth) {
+      left =
+        targetRect.left - (targetRect.left + dropdownWidth - windowWidth + 10);
+    } else {
+      left = targetRect.left;
+    }
+
+    _setPosition({ top, left });
 
     function handleOutsideClick(e: MouseEvent) {
       if (!e.target) return;
@@ -81,7 +95,7 @@ export default function DateInputCalendar({
     <div
       ref={setCalendarRef}
       className={`${styles.dateinput_modal} ${ctx.opened && styles.dateinput_modal__opened}`}
-      style={{ top: _position?.top }}
+      style={{ top: _position?.top, left: _position?.left }}
     >
       <div className={styles.calendar_header}>
         <Button

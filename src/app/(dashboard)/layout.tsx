@@ -8,12 +8,12 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <div className={styles.layout}>
       <Sidebar />
-      <section className={styles.layout}>
+      <section>
         <Header />
         {children}
       </section>
-    </>
+    </div>
   );
 }

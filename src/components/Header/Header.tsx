@@ -18,10 +18,13 @@ export default function Header() {
   const PageIcon = Icon.Home;
   const page_title = pathname.split("/")[1] || "Accueil";
 
+  // TODO: calendar on mobile view
+
   return (
     <header className={styles.header}>
       <h1 className={styles.title}>
-        {page_title} <PageIcon className={styles.page_icon} />
+        <span>{page_title}</span>
+        <PageIcon className={styles.page_icon} />
       </h1>
       <div>
         <DateInput value={date} onChange={setDate} />

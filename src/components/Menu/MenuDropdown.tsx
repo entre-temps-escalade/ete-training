@@ -14,6 +14,7 @@ interface Props {
 
 interface Posision {
   top: number;
+  left: number;
 }
 
 function MenuDropdown({
@@ -37,25 +38,36 @@ function MenuDropdown({
     const targetRect = ctx.targetRef.getBoundingClientRect();
     const dropdownHeight = dropdownRef.getBoundingClientRect().height;
 
+    let top = 0;
+    let left = 0;
+
     if (position === "top") {
       if (
         targetRect.top > dropdownHeight + 10 ||
         windowHeight - targetRect.bottom < dropdownHeight + 10
       ) {
-        _setPosition({ top: targetRect.top - dropdownHeight - 10 });
+        top = targetRect.top - dropdownHeight - 10;
       } else {
-        _setPosition({ top: targetRect.bottom + 10 });
+        top = targetRect.bottom + 10;
       }
     } else {
       if (
         windowHeight - targetRect.bottom > dropdownHeight + 10 ||
         targetRect.top < dropdownHeight + 10
       ) {
-        _setPosition({ top: targetRect.bottom + 10 });
+        top = targetRect.bottom + 10;
       } else {
-        _setPosition({ top: targetRect.top - dropdownHeight - 10 });
+        top = targetRect.top - dropdownHeight - 10;
       }
     }
+
+    if (targetRect.left < 10) {
+      left = 10;
+    } else {
+      left = targetRect.left;
+    }
+
+    _setPosition({ top, left });
 
     function handleOutsideClick(e: MouseEvent) {
       if (!e.target) return;
@@ -79,7 +91,7 @@ function MenuDropdown({
     <div
       ref={setDropdownRef}
       className={`${styles.menu_dropdown} ${ctx.opened && styles.menu_dropdown__opened}`}
-      style={{ top: _position?.top }}
+      style={{ top: _position?.top, left: _position?.left }}
     >
       {children}
     </div>

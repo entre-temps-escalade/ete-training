@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { DateInputContext } from "./DateInputContext";
-import Input from "../Input/Input";
 import styles from "./DateInput.module.scss";
 import Icon from "../Icon/Icon";
 
@@ -12,12 +11,9 @@ export default function DateInputTarget() {
   }
 
   return (
-    <Input
-      leftSection={<Icon.CalendarDays />}
-      onClick={onClick}
-      ref={ctx.setTargetRef}
-      className={styles.input}
-      defaultValue={ctx.value.format("DD/MM/YYYY")}
-    />
+    <span className={styles.input} ref={ctx.setTargetRef} onClick={onClick}>
+      <Icon.CalendarDays />
+      <span>{ctx.value.format("DD/MM/YYYY")}</span>
+    </span>
   );
 }

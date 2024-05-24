@@ -2,25 +2,47 @@
 
 import Link from "next/link";
 import styles from "./Sidebar.module.scss";
-import Logo from "../Logo/Logo";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import Button from "../Button/Button";
-import Menu from "../Menu/Menu";
 import Icon from "../Icon/Icon";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
+import ProfileMenu from "./ProfileMenu";
+import Menu from "../Menu/Menu";
+import Button from "../Button/Button";
 
 export default function Sidebar() {
-  const [mounted, setMounted] = useState(false);
+  const [expanded, setExpanded] = useState<boolean | undefined>(undefined);
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
+  const sidebarRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    setMounted(true);
-  }, [setMounted]);
+  useLayoutEffect(() => {
+    if (window.innerWidth < 640) {
+      setExpanded(false);
+    } else {
+      setExpanded(true);
+    }
+  }, []);
 
-  if (!mounted) {
-    return null;
+  useLayoutEffect(() => {
+    function handleOutsideClick(e: MouseEvent) {
+      if (!e.target || !sidebarRef.current || !expanded) return;
+
+      if (!sidebarRef.current.contains(e.target as Node)) {
+        setExpanded(false);
+      }
+    }
+
+    if (window.innerWidth < 640) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [sidebarRef.current, expanded]);
+
+  function handleExpand() {
+    setExpanded((expanded) => !expanded);
   }
 
   function SidebarLink({
@@ -31,51 +53,49 @@ export default function Sidebar() {
       <Link
         href={path}
         className={`${styles.sidebar_link} ${pathname === path && styles.sidebar_link__selected}`}
+        scroll={false}
       >
         {children}
       </Link>
     );
   }
 
-  // FIXME: move sidebar menu to it's own component because the
-  // mounted check renders a black zone before rendering the proper sidebar.
+  // TODO: gesture on mobile
+  // TODO: better animation
   return (
-    <nav className={styles.sidebar}>
-      <Link href="/" className={styles.header}>
-        <Logo width={80} height={80} />
-        <h1 className={styles.title}>ETE Training</h1>
-      </Link>
+    <nav
+      className={`${styles.sidebar} ${expanded !== undefined ? (expanded ? styles.expanded_sidebar : styles.reduced_sidebar) : null}`}
+      ref={sidebarRef}
+    >
+      <div>
+        <Link href="/" className={styles.header} scroll={false}>
+          <Image alt="logo" src="/ete.webp" height={80} width={80} priority />
+          <h1 className={styles.title}>ETE Training</h1>
+        </Link>
+        <button
+          aria-label="expand sidebar"
+          className={styles.expand_button}
+          onClick={handleExpand}
+        >
+          <Icon.AngleLeft />
+        </button>
+      </div>
       <div className={styles.sidebar_links}>
-        <SidebarLink path="/">Tableau de bord</SidebarLink>
+        <SidebarLink path="/">
+          <Icon.Home />
+          <span>Tableau de bord</span>
+        </SidebarLink>
       </div>
       <div className={styles.footer}>
         <Menu>
           <Menu.Target>
             <Button className={styles.profile_button}>
               <Icon.User />
-              Mon profil
+              <span>Mon profil</span>
             </Button>
           </Menu.Target>
           <Menu.Dropdown position="top">
-            <div className={styles.profile_dropdown}>
-              <Button>Mon profil</Button>
-              <hr />
-              <h3>Theme</h3>
-              <Button
-                onClick={() => setTheme("dark")}
-                className={`${styles.dropdown_button} ${theme == "dark" && styles.button__selected}`}
-              >
-                Sombre
-              </Button>
-              <Button
-                onClick={() => setTheme("light")}
-                className={`${styles.dropdown_button} ${theme != "dark" && styles.button__selected}`}
-              >
-                Clair
-              </Button>
-              <hr />
-              <Button className={styles.logout_button}>Se déconnecter</Button>
-            </div>
+            <ProfileMenu />
           </Menu.Dropdown>
         </Menu>
       </div>
