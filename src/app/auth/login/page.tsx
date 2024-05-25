@@ -1,6 +1,6 @@
 import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
 import styles from "./Login.module.scss";
-import Logo from "@/components/Logo/Logo";
+import Image from "next/image";
 import Input from "@/components/Input/Input";
 import Link from "next/link";
 import Button from "@/components/Button/Button";
@@ -10,7 +10,7 @@ export default function Login() {
     <section className={styles.section}>
       <ThemeSwitcher className={styles.theme_switcher} />
       <div className={styles.header}>
-        <Logo width={32} height={32} className={styles.logo} />
+        <Image alt="logo" src="/ete.webp" height={32} width={32} priority />
         ETE Training
       </div>
       <div className={styles.card}>

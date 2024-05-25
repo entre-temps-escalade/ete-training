@@ -9,6 +9,7 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "src")],
   },
+  output: "standalone",
 };
 
 export default nextConfig;
