@@ -6,6 +6,7 @@ import CalendarDays from "./CalendarDays";
 import AngleLeft from "./AngleLeft";
 import AngleRight from "./AngleRight";
 import Bars from "./Bars";
+import ChevronDown from "./ChevronDown";
 
 const icons = {
   Bars,
@@ -16,6 +17,7 @@ const icons = {
   CalendarDays,
   AngleLeft,
   AngleRight,
+  ChevronDown,
 };
 
 export default icons;

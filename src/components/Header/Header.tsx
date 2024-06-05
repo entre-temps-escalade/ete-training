@@ -8,6 +8,7 @@ import { useContext, useState } from "react";
 import dayjs from "dayjs";
 import weekdayPlugin from "dayjs/plugin/weekday";
 import { SidebarContext } from "../Sidebar/SidebarContext";
+import DateSlider from "../DateSlider/DateSlider";
 
 dayjs.locale("fr");
 dayjs.extend(weekdayPlugin);
@@ -24,21 +25,24 @@ export default function Header() {
     ctx.expanded ? ctx.reduce() : ctx.expand();
   }
 
-  // TODO: calendar on mobile view
-
   return (
-    <header className={styles.header}>
-      <span onClick={handleExpandSidebar}>
-        <Icon.Bars />
-      </span>
-      <h1 className={styles.title}>
-        <span>{page_title}</span>
-        <PageIcon className={styles.page_icon} />
-      </h1>
-      <div>
-        <DateInput value={date} onChange={setDate} />
+    <>
+      <header className={styles.header}>
+        <span onClick={handleExpandSidebar}>
+          <Icon.Bars />
+        </span>
+        <h1 className={styles.title}>
+          <span>{page_title}</span>
+          <PageIcon className={styles.page_icon} />
+        </h1>
+        <div>
+          <DateInput value={date} onChange={setDate} />
+        </div>
+        <div></div>
+      </header>
+      <div className={styles.date_slider}>
+        <DateSlider value={date} onChange={setDate} />
       </div>
-      <div></div>
-    </header>
+    </>
   );
 }

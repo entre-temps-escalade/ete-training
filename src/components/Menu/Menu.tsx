@@ -3,8 +3,12 @@ import { MenuProvider } from "./MenuContext";
 import MenuTarget from "./MenuTarget";
 import MenuDropdown from "./MenuDropdown";
 
-function Menu({ children }: PropsWithChildren) {
-  return <MenuProvider>{children}</MenuProvider>;
+interface Props {
+  onExit?: () => void;
+}
+
+function Menu({ children, onExit }: PropsWithChildren<Props>) {
+  return <MenuProvider onExit={onExit}>{children}</MenuProvider>;
 }
 
 Menu.Target = MenuTarget;

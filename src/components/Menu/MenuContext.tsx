@@ -10,12 +10,16 @@ interface IMenuContext {
 
 export const MenuContext = createContext<IMenuContext | null>(null);
 
-export const MenuProvider = ({ children }: PropsWithChildren) => {
+export const MenuProvider = ({
+  children,
+  onExit,
+}: PropsWithChildren<{ onExit?: () => void }>) => {
   const [opened, setOpened] = useState(false);
   const [targetRef, setTargetRef] = useState<HTMLElement | null>(null);
 
   function close() {
     setOpened(false);
+    onExit && onExit();
   }
 
   function open() {

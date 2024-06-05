@@ -1,0 +1,119 @@
+$item_height: 50px;
+
+.button {
+  background: var(--primary-950) !important;
+  box-shadow: 0 0 0 1px var(--primary-600) !important;
+  padding: 0.15rem 0.5rem !important;
+  margin-left: 0.75rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+
+  &:not([hidden])~:not([hidden]) {
+    margin-left: 0.5rem;
+  }
+
+  &:active {
+    background: var(--primary-900) !important;
+  }
+
+  & svg {
+    height: 0.8rem;
+    padding-left: 0.5rem;
+  }
+}
+
+.button_array {
+  display: flex;
+}
+
+.date_picker {
+  background: var(--gray-800);
+  border-radius: 0.5rem;
+  border: 1px solid var(--gray-700);
+  transform: translateX(-3rem);
+  overflow: hidden;
+  width: 100%;
+}
+
+.selected {
+  color: var(--primary-400);
+  font-weight: bold;
+}
+
+.drag_dealer {
+  position: relative;
+  height: $item_height;
+  margin: $item_height 0;
+  padding: 0 2rem;
+
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6rem;
+    height: $item_height;
+    background-color: var(--gray-800);
+    opacity: 0.8;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  &::before {
+    top: calc(-#{$item_height} - 1px);
+    border-bottom: 1px solid var(--gray-50);
+  }
+
+  &::after {
+    bottom: calc(-#{$item_height} - 1px);
+    border-top: 1px solid var(--gray-50);
+  }
+
+  ul.handle {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 6rem;
+    transition: transform .3s ease-in-out;
+  }
+
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $item_height;
+    user-select: none;
+  }
+}
+
+.carousel {
+  display: flex;
+  transition: transform .3s ease-in-out;
+}
+
+.day_card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--gray-700);
+  min-width: 50px;
+  max-width: 50px;
+  font-size: 0.8rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0 8px;
+  padding: 0.5rem 0;
+  border-radius: 0.5rem;
+  background: var(--gray-800);
+
+  & span:first-child {
+    margin-bottom: 0.25rem;
+  }
+}
+
+.selected_day {
+  color: var(--primary-400);
+  font-weight: bold;
+  border: 1px solid var(--primary-400);
+}

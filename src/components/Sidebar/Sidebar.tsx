@@ -61,7 +61,6 @@ export default function Sidebar() {
     );
   }
 
-  // TODO: better animation
   return (
     <nav
       className={`${styles.sidebar} ${expanded !== undefined ? (expanded ? styles.expanded_sidebar : styles.reduced_sidebar) : null}`}

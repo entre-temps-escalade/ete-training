@@ -14,7 +14,6 @@
     justify-content: center;
     height: 3rem;
     position: relative;
-    z-index: 0;
 
     &>span {
       cursor: pointer;
@@ -32,6 +31,12 @@
     &>span {
       display: none;
     }
+  }
+}
+
+.date_slider {
+  @include sm() {
+    display: none;
   }
 }
 

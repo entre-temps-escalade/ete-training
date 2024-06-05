@@ -73,10 +73,11 @@ function MenuDropdown({
       if (!e.target) return;
 
       if (
+        ctx &&
         !dropdownRef?.contains(e.target as Node) &&
-        !ctx?.targetRef?.contains(e.target as Node)
+        !ctx.targetRef?.contains(e.target as Node)
       ) {
-        ctx?.close();
+        ctx.opened && ctx.close();
       }
     }
 
@@ -85,7 +86,7 @@ function MenuDropdown({
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
-  }, [dropdownRef, position, ctx, windowHeight]);
+  }, [dropdownRef, position, ctx.targetRef, windowHeight, ctx.opened]);
 
   return (
     <div
