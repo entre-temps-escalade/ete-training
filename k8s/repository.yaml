@@ -4,5 +4,5 @@ metadata:
   name: ete-training
   namespace: flux-system
 spec:
-  image: docker.io/theoposty/ete-training
+  image: theoposty/ete-training
   interval: 1m
