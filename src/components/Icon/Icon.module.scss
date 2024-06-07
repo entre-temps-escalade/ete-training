@@ -1,4 +1,15 @@
 .icon {
-    display: inline-block;
-    height: 1rem;
+  display: inline-block;
+  height: 1rem;
+}
+
+.spinner {
+  transform-origin: center;
+  animation: spinner .75s infinite linear
+}
+
+@keyframes spinner {
+  100% {
+    transform: rotate(360deg)
+  }
 }

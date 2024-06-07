@@ -1,0 +1,23 @@
+{
+  "name": "ETE Training",
+  "short_name": "ETE Training",
+  "icons": [
+    {
+      "src": "/app.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/maskable_icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "theme_color": "#111827",
+  "background_color": "#111827",
+  "display": "standalone",
+  "orientation": "portrait"
+}

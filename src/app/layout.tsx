@@ -6,7 +6,21 @@ import "@/styles/index.scss";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  applicationName: "ETE Training",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "ETE Training",
+    // startUpImage: [],
+  },
+  formatDetection: {
+    telephone: false,
+  },
   title: "ETE Training",
+  description: "Training application for Entre-Temps Escalade",
+  generator: "Next.js",
+  manifest: "/manifest.json",
+  authors: { name: "Theo Posty" },
 };
 
 export const viewport: Viewport = {
@@ -14,6 +28,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
+  themeColor: "#111827",
 };
 
 export default function RootLayout({

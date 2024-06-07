@@ -7,6 +7,7 @@ import AngleLeft from "./AngleLeft";
 import AngleRight from "./AngleRight";
 import Bars from "./Bars";
 import ChevronDown from "./ChevronDown";
+import Spinner from "./Spinner";
 
 const icons = {
   Bars,
@@ -18,6 +19,7 @@ const icons = {
   AngleLeft,
   AngleRight,
   ChevronDown,
+  Spinner,
 };
 
 export default icons;
