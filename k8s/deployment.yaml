@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: theoposty/ete-training:latest
+          image: theoposty/ete-training:0.1.1
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
